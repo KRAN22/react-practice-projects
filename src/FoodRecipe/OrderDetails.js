@@ -18,7 +18,7 @@ export const OrderDetails = () => {
             padding: "10px",
             textDecoration: "none",
           }}
-          to="/"
+          to="/food"
         >
           Continues Order
         </Link>

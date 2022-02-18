@@ -12,10 +12,12 @@ import {
 import { LoginFrom } from "./LoginFrom/loginFrom";
 import { Counter } from "./counter/counter";
 import { FoodRecipe } from "./FoodRecipe/FoodRecipe";
+import { OrderDetails } from "./FoodRecipe/OrderDetails";
 
 const Home = () => {
   const navigate = useNavigate();
   const isLoggedIn = window.localStorage.getItem("isLoggedIn");
+  console.log(isLoggedIn);
   if (!(isLoggedIn == "true")) {
     return <Navigate to="/" />;
   }
@@ -65,6 +67,7 @@ function App() {
           <Route exact path="/movieSearch" element={<MovieSearch />} />
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/food" element={<FoodRecipe />} />
+          <Route path="/orderDetails" element={<OrderDetails />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/" element={<LoginFrom />} />
         </Routes>
