@@ -1,15 +1,23 @@
 import React from "react";
 import "./Calculator/style.css";
 import { MovieSearch } from "./movieSearch/movieSearch";
-import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import { LoginFrom } from "./LoginFrom/loginFrom";
 import { Counter } from "./counter/counter";
 import { FoodRecipe } from "./FoodRecipe/FoodRecipe";
 
 const Home = () => {
+  const navigate = useNavigate();
   const isLoggedIn = window.localStorage.getItem("isLoggedIn");
   if (!(isLoggedIn == "true")) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   const liStyle = {
@@ -38,6 +46,14 @@ const Home = () => {
       <li style={liStyle}>
         <Link to="/food">Food Recipe</Link>
       </li>
+      <button
+        onClick={() => {
+          window.localStorage.setItem("isLoggedIn", false);
+          navigate("/");
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };
