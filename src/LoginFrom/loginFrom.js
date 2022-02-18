@@ -18,7 +18,7 @@ export const LoginFrom = () => {
   const SubmitHandler = () => {
     if (userName === userA && PassWord === passwordB) {
       window.localStorage.setItem("isLoggedIn", true);
-      navigate("dashboard");
+      navigate("home");
     } else {
       alert("invalid login");
     }

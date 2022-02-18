@@ -12,11 +12,6 @@ export const MovieSearch = () => {
   const [loading, setLoading] = useState(false);
   const [soFound, setSoFound] = useState(false);
 
-  const isLoggedIn = window.localStorage.getItem("isLoggedIn");
-  if (!(isLoggedIn == "true")) {
-    return <Navigate to="/" />;
-  }
-
   const ClickHandler = async (e) => {
     setError("");
     e.preventDefault();
