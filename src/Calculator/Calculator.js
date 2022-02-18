@@ -124,10 +124,11 @@ function formatOperand(operand) {
   if (operand === null) {
     return;
   }
-  const [integer, decimal] = operand.split(".");
-  if (decimal == null) {
-    return IntegerFormatter.format(integer);
-  }
+  console.log(operand);
+  // const [integer, decimal] = operand.split(".");
+  // if (decimal == null) {
+  //   return IntegerFormatter.format(integer);
+  // }
 }
 export const Calculator = () => {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(

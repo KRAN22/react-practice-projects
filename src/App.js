@@ -4,6 +4,7 @@ import { MovieSearch } from "./movieSearch/movieSearch";
 import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 import { LoginFrom } from "./LoginFrom/loginFrom";
 import { Counter } from "./counter/counter";
+import { FoodRecipe } from "./FoodRecipe/FoodRecipe";
 
 const Home = () => {
   const isLoggedIn = window.localStorage.getItem("isLoggedIn");
@@ -11,15 +12,33 @@ const Home = () => {
     return <Navigate to="/login" />;
   }
 
+  const liStyle = {
+    height: 50,
+    width: 200,
+    fontWeight: "900",
+    textDecoration: "none",
+  };
   return (
-    <>
-      <li>
+    <div
+      style={{
+        height: 300,
+        width: 150,
+        margin: "auto",
+        marginTop: "30vh",
+        fontSize: 20,
+        listStyleType: "none",
+      }}
+    >
+      <li style={liStyle}>
         <Link to="/counter">Counter</Link>
       </li>
-      <li>
+      <li style={liStyle}>
         <Link to="/movieSearch">Movies</Link>
       </li>
-    </>
+      <li style={liStyle}>
+        <Link to="/food">Food Recipe</Link>
+      </li>
+    </div>
   );
 };
 function App() {
@@ -29,6 +48,7 @@ function App() {
         <Routes>
           <Route exact path="/movieSearch" element={<MovieSearch />} />
           <Route exact path="/counter" element={<Counter />} />
+          <Route exact path="/food" element={<FoodRecipe />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/" element={<LoginFrom />} />
         </Routes>
