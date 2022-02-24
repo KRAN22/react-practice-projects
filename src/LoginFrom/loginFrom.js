@@ -20,7 +20,10 @@ export const LoginFrom = () => {
       window.localStorage.setItem("isLoggedIn", true);
       navigate("home");
     } else {
-      alert("invalid login");
+      setState(true);
+    }
+    if (userA.length === 0 && passwordB.length === 0) {
+      setState(false);
     }
   };
   return (
@@ -31,16 +34,22 @@ export const LoginFrom = () => {
         <label>Username:</label>
         <input type={"text"} name="username" onChange={ChangeHandlerA} />
         <br />
+        {state === false ? (
+          <h5 style={{ color: "red", margin: "0" }}>* userName is required</h5>
+        ) : null}
         <br />
         <label>PassWord:</label>
         <input type={"password"} onChange={ChangeHandlerB} />
         <br />
+        {state === false ? (
+          <h5 style={{ color: "red", margin: "0" }}>* password is required</h5>
+        ) : null}
         <br />
         <button onClick={SubmitHandler}>Submit</button>
-        {state === false ? (
-          <h3 style={{ color: "red" }}>
-            Your username and password not matched
-          </h3>
+        {state === true ? (
+          <h5 style={{ color: "red", margin: "0" }}>
+            userName and password not matched
+          </h5>
         ) : null}
       </center>
     </div>
