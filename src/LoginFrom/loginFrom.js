@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const userName = "123";
-const PassWord = "123";
+const _USERNAME = "123";
+const _PASSWORD = "123";
 
 export const LoginFrom = () => {
-  const [state, setState] = useState(null);
-  const [userA, setUserA] = useState("");
-  const [passwordB, setPasswordB] = useState("");
+  const [userNameError, setUserNameError] = useState();
+  const [passwordError, setPasswordError] = useState();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState();
 
   const ChangeHandlerA = (e) => {
-    setUserA(e.target.value);
+    setUserName(e.target.value);
   };
   const ChangeHandlerB = (e) => {
-    setPasswordB(e.target.value);
+    setPassword(e.target.value);
   };
   const navigate = useNavigate();
   const SubmitHandler = () => {
-    if (userName === userA && PassWord === passwordB) {
+    if (_USERNAME === userName && _PASSWORD === password) {
       window.localStorage.setItem("isLoggedIn", true);
       navigate("home");
-    } else {
-      setState(true);
     }
-    if (userA.length === 0 && passwordB.length === 0) {
-      setState(false);
-    }
+    setError(true);
+    setUserNameError(userName.length === 0);
+    setPasswordError(password.length === 0);
   };
   return (
     <div>
@@ -34,23 +34,23 @@ export const LoginFrom = () => {
         <label>Username:</label>
         <input type={"text"} name="username" onChange={ChangeHandlerA} />
         <br />
-        {state === false ? (
-          <h5 style={{ color: "red", margin: "0" }}>* userName is required</h5>
-        ) : null}
+        {userNameError && (
+          <h6 style={{ color: "red", margin: "0" }}>* Username is required</h6>
+        )}
         <br />
         <label>PassWord:</label>
         <input type={"password"} onChange={ChangeHandlerB} />
         <br />
-        {state === false ? (
+        {passwordError && (
           <h5 style={{ color: "red", margin: "0" }}>* password is required</h5>
-        ) : null}
+        )}
         <br />
         <button onClick={SubmitHandler}>Submit</button>
-        {state === true ? (
+        {error && (
           <h5 style={{ color: "red", margin: "0" }}>
             userName and password not matched
           </h5>
-        ) : null}
+        )}
       </center>
     </div>
   );

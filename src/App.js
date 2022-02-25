@@ -18,7 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const isLoggedIn = window.localStorage.getItem("isLoggedIn");
   console.log(isLoggedIn);
-  if (!(isLoggedIn == "true")) {
+  if (isLoggedIn === "false") {
     return <Navigate to="/" />;
   }
 
